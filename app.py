@@ -8,15 +8,7 @@ import requests
 
 st.title("Rillet lead enrichment pipeline")
 
-with st.sidebar:
-    st.header("API Configuration")
-    crustdata_token = st.secrets.get("CRUSTDATA_API_TOKEN", "") or os.environ.get("CRUSTDATA_API_TOKEN", "")
-    crustdata_token = st.text_input(
-        "Crustdata API Token",
-        value=crustdata_token,
-        type="password",
-        help="Get this from your Crustdata dashboard. Or set CRUSTDATA_API_TOKEN env var.",
-    )
+crustdata_token = st.secrets.get("CRUSTDATA_API_TOKEN", "") or os.environ.get("CRUSTDATA_API_TOKEN", "")
 
 
 def enrich_with_crustdata(domain: str, token: str) -> dict:
